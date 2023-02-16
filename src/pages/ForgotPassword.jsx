@@ -1,47 +1,47 @@
-import { useRef, useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { useForm } from 'react-hook-form';
+import { useRef, useState } from 'react'
+import { Helmet } from 'react-helmet'
+import { useForm } from 'react-hook-form'
 import {
-  Button, Form, FormControl, FormLabel, Spinner,
-} from 'react-bootstrap';
+  Button, Form, FormControl, FormLabel, Spinner
+} from 'react-bootstrap'
 
-import useAuth from '../hooks/useAuth';
+import useAuth from '../hooks/useAuth'
 
-import StatusAlert from '../components/StatusAlert';
-import { emailPattern } from '../common/constants';
+import StatusAlert from '../components/StatusAlert'
+import { emailPattern } from '../common/constants'
 
-import './auth.css';
+import './auth.css'
 
-function ForgotPassword() {
-  const title = 'Forgot Password';
+function ForgotPassword () {
+  const title = 'Forgot Password'
 
-  const [isLoading, setIsLoading] = useState(false);
-  const { sendPasswordReset } = useAuth();
+  const [isLoading, setIsLoading] = useState(false)
+  const { sendPasswordReset } = useAuth()
   const {
-    register, handleSubmit, formState: { errors },
-  } = useForm();
+    register, handleSubmit, formState: { errors }
+  } = useForm()
 
-  const alertOpts = useRef({ isShow: false, variant: 'success', message: '' });
+  const alertOpts = useRef({ isShow: false, variant: 'success', message: '' })
 
   const handleDismiss = () => {
-    alertOpts.current.isShow = false;
-  };
+    alertOpts.current.isShow = false
+  }
 
   const handleSend = async () => {
     try {
-      setIsLoading(true);
-      await sendPasswordReset();
+      setIsLoading(true)
+      await sendPasswordReset()
 
       // Need to useRef to avoid cyclic reference of the show state in StatusAlert but we now must set alertOps
       // before a set state call so that StatusAlert can render.
       // TODO: Figure a more elegant solution for auto-dismissal alert.
-      alertOpts.current = { isShow: true, variant: 'success', message: 'email sent' };
-      setIsLoading(false);
+      alertOpts.current = { isShow: true, variant: 'success', message: 'email sent' }
+      setIsLoading(false)
     } catch (err) {
-      alertOpts.current = { isShow: true, variant: 'failure', message: err.message };
-      setIsLoading(false);
+      alertOpts.current = { isShow: true, variant: 'failure', message: err.message }
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <>
@@ -64,7 +64,7 @@ function ForgotPassword() {
                            {
                              ...register('email', {
                                required: true,
-                               pattern: emailPattern,
+                               pattern: emailPattern
                              })
                            }
               />
@@ -91,7 +91,7 @@ function ForgotPassword() {
                    onDismiss={handleDismiss}
       />
     </>
-  );
+  )
 }
 
-export default ForgotPassword;
+export default ForgotPassword

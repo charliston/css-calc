@@ -1,7 +1,7 @@
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet'
 
-function Apps() {
-  const title = 'Applications';
+function Apps () {
+  const title = 'Applications'
 
   return (
     <>
@@ -15,7 +15,7 @@ function Apps() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Apps;
+export default Apps

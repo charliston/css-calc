@@ -1,12 +1,12 @@
-import { Helmet } from 'react-helmet';
-import Jdenticon from '../components/Jdenticon';
-import useAuth from '../hooks/useAuth';
+import { Helmet } from 'react-helmet'
+import Jdenticon from '../components/Jdenticon'
+import useAuth from '../hooks/useAuth'
 
-function Dashboard() {
-  const title = 'Dashboard';
+function Dashboard () {
+  const title = 'Dashboard'
 
-  const { getSession } = useAuth();
-  const user = getSession();
+  const { getSession } = useAuth()
+  const user = getSession()
 
   return (
     <>
@@ -37,7 +37,7 @@ function Dashboard() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Dashboard;
+export default Dashboard

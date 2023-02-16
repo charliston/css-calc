@@ -1,8 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Link, useLocation } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
-function NotFound() {
-  const location = useLocation();
+function NotFound () {
+  const location = useLocation()
 
   return (
     <>
@@ -21,7 +21,7 @@ function NotFound() {
         </div>
       </main>
     </>
-  );
+  )
 }
 
-export default NotFound;
+export default NotFound

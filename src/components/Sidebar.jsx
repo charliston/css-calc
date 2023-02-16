@@ -1,14 +1,14 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 
-import './sidebar.css';
+import './sidebar.css'
 
-function Sidebar() {
+function Sidebar () {
   const items = [
     { path: '/console', title: 'Dashboard', icon: 'bi-house-door' },
     { path: '/console/apps', title: 'Applications', icon: 'bi-layers' },
     { path: '/console/users', title: 'Users', icon: 'bi-people' },
-    { path: '/console/settings', title: 'Settings', icon: 'bi-gear' },
-  ];
+    { path: '/console/settings', title: 'Settings', icon: 'bi-gear' }
+  ]
 
   return (
     <>
@@ -27,7 +27,7 @@ function Sidebar() {
         </ul>
       </div>
     </>
-  );
+  )
 }
 
-export default Sidebar;
+export default Sidebar

@@ -1,10 +1,10 @@
-import { Helmet } from 'react-helmet';
-import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet'
+import { useNavigate } from 'react-router-dom'
 
-function Home() {
-  const title = 'React Bootstrap Template';
+function Home () {
+  const title = 'React Bootstrap Template'
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <>
@@ -36,7 +36,7 @@ function Home() {
         </div>
       </main>
     </>
-  );
+  )
 }
 
-export default Home;
+export default Home

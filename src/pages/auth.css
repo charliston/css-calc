@@ -10,10 +10,10 @@ body {
 }
 
 .container-auth {
-  width: 100%;
+  margin: auto;
   max-width: 330px;
   padding: 15px;
-  margin: auto;
+  width: 100%;
 }
 
 .container-auth .checkbox {
@@ -25,20 +25,20 @@ body {
 }
 
 .container-auth .form-input-top {
-  margin-bottom: -1px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  margin-bottom: -1px;
 }
 
 .container-auth .form-input-middle {
-  margin-bottom: -1px;
   border-radius: 0;
+  margin-bottom: -1px;
 }
 
 .container-auth .form-input-bottom {
-  margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  margin-bottom: 10px;
 }
 
 .auth-icon {

@@ -1,7 +1,7 @@
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet'
 
-function Settings() {
-  const title = 'Settings';
+function Settings () {
+  const title = 'Settings'
 
   return (
     <>
@@ -15,7 +15,7 @@ function Settings() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Settings;
+export default Settings

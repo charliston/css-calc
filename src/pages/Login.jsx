@@ -1,77 +1,77 @@
-import { useRef, useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useRef, useState } from 'react'
+import { Helmet } from 'react-helmet'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {
-  Button, Col, Form, FormControl, FormLabel, Row, Spinner,
-} from 'react-bootstrap';
+  Button, Col, Form, FormControl, FormLabel, Row, Spinner
+} from 'react-bootstrap'
 
-import StatusAlert from '../components/StatusAlert';
-import useAuth from '../hooks/useAuth';
-import useForm from '../hooks/useForm';
+import StatusAlert from '../components/StatusAlert'
+import useAuth from '../hooks/useAuth'
+import useForm from '../hooks/useForm'
 
-import './auth.css';
+import './auth.css'
 
-function redirectPath(search) {
-  const match = search.match(/redirect=(.*)/);
-  const redirect = match?.[1];
-  return redirect ? decodeURIComponent(redirect) : '/console';
+function redirectPath (search) {
+  const match = search.match(/redirect=(.*)/)
+  const redirect = match?.[1]
+  return redirect ? decodeURIComponent(redirect) : '/console'
 }
 
-function Login() {
-  const title = 'Login';
+function Login () {
+  const title = 'Login'
 
-  const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
-  const navigate = useNavigate();
-  const { search } = useLocation();
+  const [isLoading, setIsLoading] = useState(false)
+  const { login } = useAuth()
+  const navigate = useNavigate()
+  const { search } = useLocation()
 
-  const alertOpts = useRef({ isShow: false, message: '' });
+  const alertOpts = useRef({ isShow: false, message: '' })
 
   const handleDismiss = () => {
-    alertOpts.current.isShow = false;
-  };
+    alertOpts.current.isShow = false
+  }
 
   const handleLogin = async (e, data) => {
     // eslint-disable-next-line no-console
-    console.log(data.username, data.password);
+    console.log(data.username, data.password)
     try {
-      setIsLoading(true);
-      const token = await login(data.username, data.password);
+      setIsLoading(true)
+      const token = await login(data.username, data.password)
       // eslint-disable-next-line no-console
-      console.log(`login successful, token: ${token}`);
-      setIsLoading(false);
-      navigate(redirectPath(search));
+      console.log(`login successful, token: ${token}`)
+      setIsLoading(false)
+      navigate(redirectPath(search))
     } catch (err) {
       // Need to useRef to avoid cyclic reference of the show state in StatusAlert but we now must set alertOps
       // before a set state call so that StatusAlert can render.
       // TODO: Figure a more elegant solution for auto-dismissal alert.
-      alertOpts.current = { isShow: true, message: err.message };
-      setIsLoading(false);
+      alertOpts.current = { isShow: true, message: err.message }
+      setIsLoading(false)
     }
-  };
+  }
 
   const validators = {
     username: {
       required: {
         value: true,
-        message: 'username is required',
-      },
+        message: 'username is required'
+      }
     },
     password: {
       required: {
         value: true,
-        message: 'password is required',
-      },
-    },
-  };
+        message: 'password is required'
+      }
+    }
+  }
 
   // Using a custom hook to show how we can build out our own hook.
   const {
-    data, handleChange, handleSubmit, errors,
+    data, handleChange, handleSubmit, errors
   } = useForm({
     onSubmit: handleLogin,
-    validators,
-  });
+    validators
+  })
 
   return (
     <>
@@ -79,8 +79,8 @@ function Login() {
         <title>{title}</title>
       </Helmet>
       <main className="container-auth text-center">
-        <Form noValidate>
-          <i className="bi bi-file-lock-fill auth-icon my-4"/>
+        <Form noValidate onSubmit={handleSubmit}>
+          <i className="bi bi-file-lock-fill auth-icon my-4" />
           <p className="mb-3 fw-normal">
             Click <strong>Log in</strong> button to log into the admin console.
             Use <strong>admin</strong>:<strong>qwerty</strong> to log in.
@@ -118,9 +118,8 @@ function Login() {
             <div className="col-6"><Link to="/signup">New account</Link></div>
           </div>
           <Button className="w-100 btn btn-lg btn-primary"
-                  type="button"
+                  type="submit"
                   disabled={isLoading}
-                  onClick={handleSubmit}
           >
             <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" hidden={!isLoading} />
             <span className="px-2">Log in</span>
@@ -133,7 +132,7 @@ function Login() {
                    onDismiss={handleDismiss}
       />
     </>
-  );
+  )
 }
 
-export default Login;
+export default Login

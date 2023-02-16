@@ -1,15 +1,15 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 
-import './navbar.css';
-import logo from './logo.svg';
+import './navbar.css'
+import logo from './logo.svg'
 
-function MainNavbar() {
+function MainNavbar () {
   const items = [
     { path: '/', title: 'Home' },
     { path: '/login', title: 'Login' },
     { path: '/logout', title: 'Logout' },
-    { path: '/signup', title: 'Signup' },
-  ];
+    { path: '/signup', title: 'Signup' }
+  ]
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,7 +25,7 @@ function MainNavbar() {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"/>
+          <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarMenu">
           <ul className="navbar-nav">
@@ -40,7 +40,7 @@ function MainNavbar() {
         </div>
       </div>
     </nav>
-  );
+  )
 }
 
-export default MainNavbar;
+export default MainNavbar

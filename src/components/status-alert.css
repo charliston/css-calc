@@ -1,7 +1,7 @@
 .status-alert {
-  z-index: 100;
-  position: absolute;
-  width: auto;
   bottom: 10px;
+  position: absolute;
   right: 20px;
+  width: auto;
+  z-index: 100;
 }

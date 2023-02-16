@@ -1,7 +1,7 @@
 .navbar-logo {
+  height: 32px;
   pointer-events: none;
   width: 32px;
-  height: 32px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

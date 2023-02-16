@@ -1,49 +1,49 @@
-import { useRef, useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { useRef, useState } from 'react'
+import { Helmet } from 'react-helmet'
+import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import {
-  Col, Button, Form, FormControl, InputGroup, FormLabel, Spinner,
-} from 'react-bootstrap';
+  Col, Button, Form, FormControl, InputGroup, FormLabel, Spinner
+} from 'react-bootstrap'
 
-import StatusAlert from '../components/StatusAlert';
-import { emailPattern, namePattern } from '../common/constants';
-import useAuth from '../hooks/useAuth';
+import StatusAlert from '../components/StatusAlert'
+import { emailPattern, namePattern } from '../common/constants'
+import useAuth from '../hooks/useAuth'
 
-import './signup.css';
+import './signup.css'
 
-function Signup() {
-  const title = 'Signup';
+function Signup () {
+  const title = 'Signup'
 
-  const [isLoading, setIsLoading] = useState(false);
-  const { addUser } = useAuth();
-  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false)
+  const { addUser } = useAuth()
+  const navigate = useNavigate()
   const {
-    register, handleSubmit, formState: { errors },
-  } = useForm();
+    register, handleSubmit, formState: { errors }
+  } = useForm()
 
-  const alertOpts = useRef({ isShow: false, message: '' });
+  const alertOpts = useRef({ isShow: false, message: '' })
 
   const handleDismiss = () => {
-    alertOpts.current.isShow = false;
-  };
+    alertOpts.current.isShow = false
+  }
 
   const handleSignup = async (data) => {
     try {
-      setIsLoading(true);
-      const user = await addUser(data);
+      setIsLoading(true)
+      const user = await addUser(data)
       // eslint-disable-next-line no-console
-      console.log(`signup successful, user: ${user}`);
-      setIsLoading(false);
-      navigate('/login');
+      console.log(`signup successful, user: ${user}`)
+      setIsLoading(false)
+      navigate('/login')
     } catch (err) {
       // Need to useRef to avoid cyclic reference of the show state in StatusAlert but we now must set alertOps
       // before a set state call so that StatusAlert can render.
       // TODO: Figure a more elegant solution for auto-dismissal alert.
-      alertOpts.current = { isShow: true, message: err.message };
-      setIsLoading(false);
+      alertOpts.current = { isShow: true, message: err.message }
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <>
@@ -52,7 +52,7 @@ function Signup() {
       </Helmet>
       <main className="container-signup">
         <Form className="row g-2" noValidate>
-          <i className="bi bi-file-lock-fill auth-icon mt-3 text-center"/>
+          <i className="bi bi-file-lock-fill auth-icon mt-3 text-center" />
           <p className="fw-normal text-center">Fill up the form and then click <strong>Sign up</strong> button to sign up.</p>
           <Form.Group as={Col} lg="6" controlId="inputFirstName">
             <FormLabel>First Name</FormLabel>
@@ -71,7 +71,7 @@ function Signup() {
                          {
                            ...register('lastname', {
                              required: true,
-                             pattern: namePattern,
+                             pattern: namePattern
                            })
                          }
             />
@@ -88,7 +88,7 @@ function Signup() {
                          {
                            ...register('email', {
                              required: true,
-                             pattern: emailPattern,
+                             pattern: emailPattern
                            })
                          }
             />
@@ -120,7 +120,7 @@ function Signup() {
                          {
                            ...register('password', {
                              required: true,
-                             minLength: 5,
+                             minLength: 5
                            })
                          }
             />
@@ -154,7 +154,7 @@ function Signup() {
                    onDismiss={handleDismiss}
       />
     </>
-  );
+  )
 }
 
-export default Signup;
+export default Signup

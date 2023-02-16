@@ -1,33 +1,33 @@
-import { useEffect, useState } from 'react';
-import { Alert } from 'react-bootstrap';
+import { useEffect, useState } from 'react'
+import { Alert } from 'react-bootstrap'
 
-import './status-alert.css';
+import './status-alert.css'
 
 const variants = new Map([
   ['success', { variant: 'success', prefix: 'Success', icon: 'bi-check-circle-fill' }],
   ['failure', { variant: 'danger', prefix: 'Failure', icon: 'bi-exclamation-octagon-fill' }],
-  ['warning', { variant: 'warning', prefix: 'Warning', icon: 'bi-exclamation-triangle-fill' }],
-]);
+  ['warning', { variant: 'warning', prefix: 'Warning', icon: 'bi-exclamation-triangle-fill' }]
+])
 
-function StatusAlert({
+function StatusAlert ({
   message,
   variant = 'success',
   show = false,
   delay = 3000,
-  onDismiss,
+  onDismiss
 }) {
-  const [isShow, setIsShow] = useState(show);
+  const [isShow, setIsShow] = useState(show)
 
   useEffect(() => {
-    setIsShow(show);
-  }, [show]);
+    setIsShow(show)
+  }, [show])
 
   setTimeout(() => {
-    setIsShow(false);
-    onDismiss && onDismiss();
-  }, delay);
+    setIsShow(false)
+    onDismiss && onDismiss()
+  }, delay)
 
-  const config = variants.get(variant);
+  const config = variants.get(variant)
 
   return (
     <Alert className="status-alert"
@@ -37,7 +37,7 @@ function StatusAlert({
       <i className={config.icon} />
       <strong className="mx-2">{config.prefix}:</strong>{message}
     </Alert>
-  );
+  )
 }
 
-export default StatusAlert;
+export default StatusAlert

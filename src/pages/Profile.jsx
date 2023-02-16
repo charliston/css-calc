@@ -1,13 +1,13 @@
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet'
 
-import Jdenticon from '../components/Jdenticon';
-import useAuth from '../hooks/useAuth';
+import Jdenticon from '../components/Jdenticon'
+import useAuth from '../hooks/useAuth'
 
-function Logout() {
-  const title = 'Profile';
+function Logout () {
+  const title = 'Profile'
 
-  const { getSession } = useAuth();
-  const user = getSession();
+  const { getSession } = useAuth()
+  const user = getSession()
 
   return (
     <>
@@ -34,7 +34,7 @@ function Logout() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Logout;
+export default Logout

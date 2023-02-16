@@ -1,13 +1,13 @@
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
 
-import Footer from '../components/Footer';
-import ConsoleNavbar from '../components/ConsoleNavbar';
-import Sidebar from '../components/Sidebar';
-import useAuth from '../hooks/useAuth';
+import Footer from '../components/Footer'
+import ConsoleNavbar from '../components/ConsoleNavbar'
+import Sidebar from '../components/Sidebar'
+import useAuth from '../hooks/useAuth'
 
-function ConsoleLayout() {
-  const auth = useAuth();
-  const { pathname } = useLocation();
+function ConsoleLayout () {
+  const auth = useAuth()
+  const { pathname } = useLocation()
 
   if (auth.isAuth()) {
     return (
@@ -25,10 +25,10 @@ function ConsoleLayout() {
           </div>
         </div>
       </>
-    );
+    )
   }
 
-  return <Navigate to={`/login?redirect=${encodeURIComponent(pathname)}`} replace />;
+  return <Navigate to={`/login?redirect=${encodeURIComponent(pathname)}`} replace />
 }
 
-export default ConsoleLayout;
+export default ConsoleLayout

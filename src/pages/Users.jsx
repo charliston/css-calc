@@ -1,56 +1,56 @@
-import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet'
 
-import useAuth from '../hooks/useAuth';
-import Jdenticon from '../components/Jdenticon';
+import useAuth from '../hooks/useAuth'
+import Jdenticon from '../components/Jdenticon'
 
-function TableRow({ users }) {
+function TableRow ({ users }) {
   if (!users) {
-    return <></>;
+    return <></>
   }
 
   return (
     <>
-    {
-      users.map((user, i) => (
-        <tr key={i} className="align-middle">
-          <td>{i}</td>
-          <td>{user.id}</td>
-          <td>{user.username}</td>
-          <td>{user.email}</td>
-          <td>{user.firstname} {user.lastname}</td>
-          <td><Jdenticon name={user.username} height="32px" width="32px" /></td>
-        </tr>
-      ))
-    }
+      {
+        users.map((user, i) => (
+          <tr key={i} className="align-middle">
+            <td>{i}</td>
+            <td>{user.id}</td>
+            <td>{user.username}</td>
+            <td>{user.email}</td>
+            <td>{user.firstname} {user.lastname}</td>
+            <td><Jdenticon name={user.username} height="32px" width="32px" /></td>
+          </tr>
+        ))
+      }
     </>
-  );
+  )
 }
 
-function Users() {
-  const title = 'Users';
+function Users () {
+  const title = 'Users'
 
-  const { getUsers } = useAuth();
-  const [users, setUsers] = useState();
+  const { getUsers } = useAuth()
+  const [users, setUsers] = useState()
 
   useEffect(() => {
     let isMounted = true;
 
     (async () => {
       try {
-        const allusers = await getUsers();
+        const allusers = await getUsers()
         if (isMounted) {
-          setUsers(allusers);
+          setUsers(allusers)
         }
       } catch (err) {
         // eslint-disable-next-line no-alert
-        alert(`failed to load users: ${err}`);
+        alert(`failed to load users: ${err}`)
       }
-    })();
+    })()
 
     // Cleanup callback as the component unmounts.
-    return () => { isMounted = false; };
-  }, [getUsers]);
+    return () => { isMounted = false }
+  }, [getUsers])
 
   return (
     <>
@@ -82,13 +82,13 @@ function Users() {
             </tr>
             </thead>
             <tbody>
-              <TableRow users={users} />
+            <TableRow users={users} />
             </tbody>
           </table>
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Users;
+export default Users

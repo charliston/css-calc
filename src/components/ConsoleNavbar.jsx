@@ -1,23 +1,23 @@
-import { useNavigate } from 'react-router-dom';
-import Jdenticon from './Jdenticon';
-import useAuth from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom'
+import Jdenticon from './Jdenticon'
+import useAuth from '../hooks/useAuth'
 
-import { logout } from '../services/MockAuthService';
+import { logout } from '../services/MockAuthService'
 
-import './console-navbar.css';
-import logo from './logo.svg';
+import './console-navbar.css'
+import logo from './logo.svg'
 
-function ConsoleNavbar() {
-  const navigate = useNavigate();
-  const auth = useAuth();
-  const user = auth.getSession();
+function ConsoleNavbar () {
+  const navigate = useNavigate()
+  const auth = useAuth()
+  const user = auth.getSession()
 
   const handleLogout = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    await logout();
-    navigate('/');
-  };
+    await logout()
+    navigate('/')
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark sticky-top bg-dark p-1 shadow">
@@ -34,7 +34,7 @@ function ConsoleNavbar() {
                   aria-expanded="false"
                   aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"/>
+            <span className="navbar-toggler-icon" />
           </button>
         </div>
         <div className="collapse navbar-collapse flex-grow-1 text-right" id="navbarDropdown">
@@ -50,7 +50,7 @@ function ConsoleNavbar() {
               </button>
               <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu">
                 <li>
-                  <a className="dropdown-item" href='/console/profile'>Profile</a>
+                  <a className="dropdown-item" href="/console/profile">Profile</a>
                 </li>
                 <li>
                   <button className="dropdown-item" onClick={handleLogout}>Logout</button>
@@ -61,7 +61,7 @@ function ConsoleNavbar() {
         </div>
       </div>
     </nav>
-  );
+  )
 }
 
-export default ConsoleNavbar;
+export default ConsoleNavbar
