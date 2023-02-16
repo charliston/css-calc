@@ -2,37 +2,36 @@
   "name": "cybersamx-react-bootstrap",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^14.3.0",
-    "bootstrap": "^5.1.3",
-    "history": "^5.1.0",
-    "jdenticon": "^3.1.1",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.0.1",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "react-hook-form": "^7.33.1",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
-  },
-  "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.4.1"
-  },
-  "resolutions": {
-    "**/**/immer": "^9.0.6"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js src/**/*.jsx"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "bootstrap": "^5.2.3",
+    "history": "^5.3.0",
+    "jdenticon": "^3.2.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.43.1",
+    "react-router-dom": "^6.8.1",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-standard-jsx": "^11.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.4",
+    "standard-react": "^4.0.0"
   },
   "browserslist": {
     "production": [
