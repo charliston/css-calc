@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Alert } from 'react-bootstrap'
 
 import './status-alert.css'
@@ -30,9 +30,10 @@ function StatusAlert ({
   const config = variants.get(variant)
 
   return (
-    <Alert className="status-alert"
-           variant={config.variant}
-           show={isShow}
+    <Alert
+      className="status-alert"
+      variant={config.variant}
+      show={isShow}
     >
       <i className={config.icon} />
       <strong className="mx-2">{config.prefix}:</strong>{message}

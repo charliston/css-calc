@@ -1,10 +1,9 @@
+import React from 'react'
 import { Helmet } from 'react-helmet'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Home () {
   const title = 'React Bootstrap Template'
-
-  const navigate = useNavigate()
 
   return (
     <>
@@ -19,18 +18,8 @@ function Home () {
               A simple, clean starter web app project with React and Bootstrap 5.
             </p>
             <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-              <button type="button"
-                      className="btn btn-outline-secondary btn-lg px-4"
-                      onClick={() => navigate('/signup')}
-              >
-                Sign up
-              </button>
-              <button type="button"
-                      className="btn btn-primary btn-lg px-4 gap-3"
-                      onClick={() => navigate('/login')}
-              >
-                Log in
-              </button>
+              <Link className="btn btn-outline-secondary btn-lg px-4" to="/signup">Sign up</Link>
+              <Link className="btn btn-primary btn-lg px-4 gap-3" to="/login">Log in</Link>
             </div>
           </div>
         </div>

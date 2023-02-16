@@ -26,4 +26,5 @@ function AuthProvider ({ children, ...rest }) {
 }
 
 export { AuthContext }
+
 export default AuthProvider

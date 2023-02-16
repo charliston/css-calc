@@ -10,6 +10,7 @@ const registeredUsers = new Map([
 
 function newUID () {
   const epoch = Math.floor(new Date() / 1000).toString()
+
   return `uid:${epoch}`
 }
 
@@ -55,6 +56,7 @@ async function login (username, password) {
 
       const token = newToken()
       setSession(found, token)
+
       return resolve(token)
     }, 2000)
   })

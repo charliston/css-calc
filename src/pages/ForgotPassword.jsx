@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { useForm } from 'react-hook-form'
 import {
@@ -23,9 +23,9 @@ function ForgotPassword () {
 
   const alertOpts = useRef({ isShow: false, variant: 'success', message: '' })
 
-  const handleDismiss = () => {
+  const handleDismiss = useCallback(() => {
     alertOpts.current.isShow = false
-  }
+  })
 
   const handleSend = async () => {
     try {
@@ -58,25 +58,27 @@ function ForgotPassword () {
             <p className="mb-3 fw-normal text-center">Enter your email so that we can send a password reset to you.</p>
             <Form.Group controlId="inputEmail">
               <FormLabel>Email</FormLabel>
-              <FormControl type="email"
-                           isInvalid={errors.email}
-                           placeholder="Email@domain.com"
-                           {
-                             ...register('email', {
-                               required: true,
-                               pattern: emailPattern
-                             })
-                           }
+              <FormControl
+                type="email"
+                isInvalid={errors.email}
+                placeholder="Email@domain.com"
+                {
+                  ...register('email', {
+                    required: true,
+                    pattern: emailPattern
+                  })
+                }
               />
               <Form.Control.Feedback type="invalid">
                 {errors.email?.type === 'required' && 'Email is required'}
                 {errors.email?.type === 'pattern' && 'Invalid email'}
               </Form.Control.Feedback>
             </Form.Group>
-            <Button className="w-100 btn btn-lg btn-primary mt-3"
-                    type="button"
-                    disabled={isLoading}
-                    onClick={handleSubmit(handleSend)}
+            <Button
+              className="w-100 btn btn-lg btn-primary mt-3"
+              type="button"
+              disabled={isLoading}
+              onClick={handleSubmit(handleSend)}
             >
               <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" hidden={!isLoading} />
               <span className="px-2">Reset Password</span>
@@ -85,10 +87,11 @@ function ForgotPassword () {
           <div className="col-md-3" />
         </Form>
       </main>
-      <StatusAlert show={alertOpts.current.isShow}
-                   variant={alertOpts.current.variant}
-                   message={alertOpts.current.message}
-                   onDismiss={handleDismiss}
+      <StatusAlert
+        show={alertOpts.current.isShow}
+        variant={alertOpts.current.variant}
+        message={alertOpts.current.message}
+        onDismiss={handleDismiss}
       />
     </>
   )

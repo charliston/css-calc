@@ -48,6 +48,7 @@ function useForm (options) {
 
       if (!valid) {
         setErrors(errs)
+
         return
       }
     }

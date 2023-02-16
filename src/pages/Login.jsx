@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {
@@ -14,6 +14,7 @@ import './auth.css'
 function redirectPath (search) {
   const match = search.match(/redirect=(.*)/)
   const redirect = match?.[1]
+
   return redirect ? decodeURIComponent(redirect) : '/console'
 }
 
@@ -27,9 +28,9 @@ function Login () {
 
   const alertOpts = useRef({ isShow: false, message: '' })
 
-  const handleDismiss = () => {
+  const handleDismiss = useCallback(() => {
     alertOpts.current.isShow = false
-  }
+  })
 
   const handleLogin = async (e, data) => {
     // eslint-disable-next-line no-console
@@ -86,20 +87,22 @@ function Login () {
             Use <strong>admin</strong>:<strong>qwerty</strong> to log in.
           </p>
           <Form.Group className="form-floating" controlId="inputUsername">
-            <FormControl type="text"
-                         className="form-control form-input-top"
-                         isInvalid={errors?.username}
-                         placeholder="Username"
-                         onChange={handleChange('username')}
+            <FormControl
+              type="text"
+              className="form-control form-input-top"
+              isInvalid={errors?.username}
+              placeholder="Username"
+              onChange={handleChange('username')}
             />
             <FormLabel>Username</FormLabel>
           </Form.Group>
           <Form.Group className="form-floating" controlId="inputPassword">
-            <FormControl type="password"
-                         className="form-control form-input-bottom"
-                         isInvalid={errors?.password}
-                         placeholder="Password"
-                         onChange={handleChange('password')}
+            <FormControl
+              type="password"
+              className="form-control form-input-bottom"
+              isInvalid={errors?.password}
+              placeholder="Password"
+              onChange={handleChange('password')}
             />
             <FormLabel>Password</FormLabel>
           </Form.Group>
@@ -108,28 +111,32 @@ function Login () {
           </div>
           <Form.Group as={Row} className="my-3" controlId="isRemember">
             <Col sm={{ span: 8, offset: 3 }} className="text-md-start">
-              <Form.Check label="Remember me"
-                          checked={data.isRemember}
-                          onChange={handleChange('isRemember')} />
+              <Form.Check
+                label="Remember me"
+                checked={data.isRemember}
+                onChange={handleChange('isRemember')}
+              />
             </Col>
           </Form.Group>
           <div className="row mb-3">
             <div className="col-6"><Link to="/forgot">Forgot password</Link></div>
             <div className="col-6"><Link to="/signup">New account</Link></div>
           </div>
-          <Button className="w-100 btn btn-lg btn-primary"
-                  type="submit"
-                  disabled={isLoading}
+          <Button
+            className="w-100 btn btn-lg btn-primary"
+            type="submit"
+            disabled={isLoading}
           >
             <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" hidden={!isLoading} />
             <span className="px-2">Log in</span>
           </Button>
         </Form>
       </main>
-      <StatusAlert show={alertOpts.current.isShow}
-                   variant="failure"
-                   message={alertOpts.current.message}
-                   onDismiss={handleDismiss}
+      <StatusAlert
+        show={alertOpts.current.isShow}
+        variant="failure"
+        message={alertOpts.current.message}
+        onDismiss={handleDismiss}
       />
     </>
   )

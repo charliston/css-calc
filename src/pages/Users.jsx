@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 
 import useAuth from '../hooks/useAuth'
@@ -58,8 +58,7 @@ function Users () {
         <title>{title}</title>
       </Helmet>
       <div className="container-fluid">
-        <div
-          className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 className="h2">{title}</h1>
           <div className="btn-toolbar mb-2 mb-md-0">
             <div className="btn-group me-2">
@@ -72,17 +71,17 @@ function Users () {
         <div className="table-responsive">
           <table className="table table-striped table-sm">
             <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">User ID</th>
-              <th scope="col">Username</th>
-              <th scope="col">Email</th>
-              <th scope="col">Name</th>
-              <th scope="col">Avatar</th>
-            </tr>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">User ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Name</th>
+                <th scope="col">Avatar</th>
+              </tr>
             </thead>
             <tbody>
-            <TableRow users={users} />
+              <TableRow users={users} />
             </tbody>
           </table>
         </div>

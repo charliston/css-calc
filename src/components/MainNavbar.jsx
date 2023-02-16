@@ -1,3 +1,4 @@
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 import './navbar.css'
@@ -17,13 +18,14 @@ function MainNavbar () {
         <a className="navbar-brand d-flex pt-2" href="/">
           <img src={logo} alt="" className="navbar-logo" />React-Bootstrap
         </a>
-        <button className="navbar-toggler collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarMenu"
-                aria-controls="navbarMenu"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
+        <button
+          className="navbar-toggler collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMenu"
+          aria-controls="navbarMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon" />
         </button>

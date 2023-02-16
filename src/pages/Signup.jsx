@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
@@ -24,9 +24,9 @@ function Signup () {
 
   const alertOpts = useRef({ isShow: false, message: '' })
 
-  const handleDismiss = () => {
+  const handleDismiss = useCallback(() => {
     alertOpts.current.isShow = false
-  }
+  })
 
   const handleSignup = async (data) => {
     try {
@@ -56,24 +56,26 @@ function Signup () {
           <p className="fw-normal text-center">Fill up the form and then click <strong>Sign up</strong> button to sign up.</p>
           <Form.Group as={Col} lg="6" controlId="inputFirstName">
             <FormLabel>First Name</FormLabel>
-            <FormControl type="text"
-                         isInvalid={errors.firstname}
-                         placeholder="First Name"
-                         {...register('firstname', { required: true })}
+            <FormControl
+              type="text"
+              isInvalid={errors.firstname}
+              placeholder="First Name"
+              {...register('firstname', { required: true })}
             />
             <Form.Control.Feedback type="invalid">First name is required</Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} lg="6" controlId="inputLastName">
             <FormLabel>Last Name</FormLabel>
-            <FormControl type="text"
-                         isInvalid={errors.lastname}
-                         placeholder="Last Name"
-                         {
-                           ...register('lastname', {
-                             required: true,
-                             pattern: namePattern
-                           })
-                         }
+            <FormControl
+              type="text"
+              isInvalid={errors.lastname}
+              placeholder="Last Name"
+              {
+                ...register('lastname', {
+                  required: true,
+                  pattern: namePattern
+                })
+              }
             />
             <Form.Control.Feedback type="invalid">
               {errors.lastname?.type === 'required' && 'Last name is required'}
@@ -82,15 +84,16 @@ function Signup () {
           </Form.Group>
           <Form.Group as={Col} lg="12" controlId="inputEmail">
             <FormLabel>Email</FormLabel>
-            <FormControl type="email"
-                         isInvalid={errors.email}
-                         placeholder="Email@domain.com"
-                         {
-                           ...register('email', {
-                             required: true,
-                             pattern: emailPattern
-                           })
-                         }
+            <FormControl
+              type="email"
+              isInvalid={errors.email}
+              placeholder="Email@domain.com"
+              {
+                ...register('email', {
+                  required: true,
+                  pattern: emailPattern
+                })
+              }
             />
             <Form.Control.Feedback type="invalid">
               {errors.email?.type === 'required' && 'Email is required'}
@@ -101,11 +104,12 @@ function Signup () {
             <Form.Label>Username</Form.Label>
             <InputGroup hasValidation>
               <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-              <Form.Control type="text"
-                            isInvalid={errors.username}
-                            placeholder="Username"
-                            aria-describedby="inputGroupPrepend"
-                            {...register('username', { required: true })}
+              <Form.Control
+                type="text"
+                isInvalid={errors.username}
+                placeholder="Username"
+                aria-describedby="inputGroupPrepend"
+                {...register('username', { required: true })}
               />
               <Form.Control.Feedback type="invalid">
                 {errors.username && 'Username is required'}
@@ -114,15 +118,16 @@ function Signup () {
           </Form.Group>
           <Form.Group as={Col} lg="12" controlId="inputPassword">
             <FormLabel>Password</FormLabel>
-            <FormControl type="password"
-                         isInvalid={errors.password}
-                         placeholder="Password"
-                         {
-                           ...register('password', {
-                             required: true,
-                             minLength: 5
-                           })
-                         }
+            <FormControl
+              type="password"
+              isInvalid={errors.password}
+              placeholder="Password"
+              {
+                ...register('password', {
+                  required: true,
+                  minLength: 5
+                })
+              }
             />
             <Form.Control.Feedback type="invalid">
               {errors.password?.type === 'required' && 'Password is required'}
@@ -138,20 +143,22 @@ function Signup () {
               {...register('agree', { required: true })}
             />
           </Form.Group>
-          <Button className="w-100 btn btn-lg btn-primary"
-                  type="button"
-                  disabled={isLoading}
-                  onClick={handleSubmit(handleSignup)}
+          <Button
+            className="w-100 btn btn-lg btn-primary"
+            type="button"
+            disabled={isLoading}
+            onClick={handleSubmit(handleSignup)}
           >
             <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" hidden={!isLoading} />
             <span className="px-2">Sign up</span>
           </Button>
         </Form>
       </main>
-      <StatusAlert show={alertOpts.current.isShow}
-                   variant="failure"
-                   message={alertOpts.current.message}
-                   onDismiss={handleDismiss}
+      <StatusAlert
+        show={alertOpts.current.isShow}
+        variant="failure"
+        message={alertOpts.current.message}
+        onDismiss={handleDismiss}
       />
     </>
   )

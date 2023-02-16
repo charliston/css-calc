@@ -1,3 +1,4 @@
+import React, { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Jdenticon from './Jdenticon'
 import useAuth from '../hooks/useAuth'
@@ -12,12 +13,12 @@ function ConsoleNavbar () {
   const auth = useAuth()
   const user = auth.getSession()
 
-  const handleLogout = async (e) => {
+  const handleLogout = useCallback(async (e) => {
     e.preventDefault()
 
     await logout()
     navigate('/')
-  }
+  })
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark sticky-top bg-dark p-1 shadow">
@@ -26,13 +27,14 @@ function ConsoleNavbar () {
           <img src={logo} alt="console logo" className="navbar-logo" />Admin Console
         </a>
         <div className="w-100 text-right">
-          <button className="navbar-toggler collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#sidebarMenu"
-                  aria-controls="sidebarMenu"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
+          <button
+            className="navbar-toggler collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu"
+            aria-controls="sidebarMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon" />
           </button>
@@ -40,10 +42,11 @@ function ConsoleNavbar () {
         <div className="collapse navbar-collapse flex-grow-1 text-right" id="navbarDropdown">
           <ul className="navbar-nav ms-auto flex-nowrap">
             <li className="nav-item dropdown">
-              <button className="nav-link dropdown-toggle nav-avatar-dropdown"
-                      id="dropdownMenu"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
+              <button
+                className="nav-link dropdown-toggle nav-avatar-dropdown"
+                id="dropdownMenu"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
                 <Jdenticon className="nav-avatar rounded-circle" name={user.username} height="32px" width="32px" />
                 {user.username}
